@@ -1,0 +1,19 @@
+<div class="container">
+  <md-subheader class="md-primary">
+    <h1>Resource Library</h1>
+  </md-subheader>
+  <table id="resourceTable" class="bordered highlight">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Original Path</th>
+        <th>Lang</th>
+        <th>Sample Rate</th>
+        <th>States</th>
+        <th>Uploaded Time</th>
+      </tr>
+    </thead>
+  </table>
+  <md-button class="md-primary md-raised" ng-click="showAddWavDialog($event)">Add WavSet</md-button>
+
+</div>

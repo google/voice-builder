@@ -1,0 +1,76 @@
+<div class="container">
+  <md-subheader class="md-primary">
+    <h1>Create a voice</h1>
+  </md-subheader>
+  <div layout="column" ng-cloak class="md-inline-form">
+    <form name="create-voice-from">
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex>
+          <voice-input field-name="Voice name" model-name="ctrl.createVoiceModel.voiceName">
+          </voice-input>
+        </md-input-container>
+        <md-input-container class="md-block" flex>
+          <voice-input field-name="Created by" model-name="ctrl.createVoiceModel.createdBy">
+          </voice-input>
+        </md-input-container>
+        <md-input-container class="md-block" flex>
+          <label> TTS Backend </label>
+          <md-select
+            ng-change="ctrl.changeEngine()"
+            ng-model="ctrl.createVoiceModel.ttsEngine">
+            <md-option
+              ng-value="value"
+              ng-repeat="value in ctrl.ttsEngines">{{ value.name }}</md-option>
+          </md-select>
+        </md-input-container>
+      </div>
+      <md-input-container class="md-block" flex>
+        <label>Engine params (1 "key=value" per line, order should not be changed)</label>
+        <textarea ng-model="ctrl.createVoiceModel.ttsEngine.formattedParams"></textarea>
+      </md-input-container>
+      <voice-combined-input file-path-field-name="Lexicon file path" file-path="ctrl.createVoiceModel.lexicon"
+        file-type-field-name="Lexicon file type" file-type="ctrl.createVoiceModel.lexiconFileType"
+        file-type-options="ctrl.createVoiceModel.ttsEngine.config.fileTypes.lexicon"></voice-combined-input>
+      <!-- Phonology resource setup -->
+      <voice-combined-input file-path-field-name="Phoneme inventory file path" file-path="ctrl.createVoiceModel.phonology" file-type-field-name="Phoneme inventory file type"
+        file-type="ctrl.createVoiceModel.phonologyFileType"
+        file-type-options="ctrl.createVoiceModel.ttsEngine.config.fileTypes.phonology"></voice-combined-input>
+      <md-tabs class="md-dynamic-height md-border-bottom" md-selected="config.selectedIndex" md-align-tabs="top">
+        <md-tab id="newResource">
+          <md-tab-label>Create new</md-tab-label>
+          <md-tab-body>
+            <md-content class="md-padding">
+              <md-input-container class="md-block">
+                <voice-input field-name="Sample rate" model-name="ctrl.createVoiceModel.sampleRate"></voice-input>
+              </md-input-container>
+              <!-- Wavs resource setup -->
+              <voice-combined-input file-path-field-name="Wavs file path" file-path="ctrl.createVoiceModel.wavs" file-type-field-name="Wavs file type"
+                file-type="ctrl.createVoiceModel.wavsFileType"
+                file-type-options="ctrl.createVoiceModel.ttsEngine.config.fileTypes.wavs"></voice-combined-input>
+              <!-- Wavs Info resource setup -->
+              <voice-combined-input file-path-field-name="Wavs info file path" file-path="ctrl.createVoiceModel.wavsInfo" file-type-field-name="Wavs info file type"
+                file-type="ctrl.createVoiceModel.wavsInfoFileType"
+                file-type-options="ctrl.createVoiceModel.ttsEngine.config.fileTypes.wavsInfo"></voice-combined-input>
+            </md-content>
+          </md-tab-body>
+        </md-tab>
+       <!-- TODO: uncomment after full integration. -->
+       <!--  <md-tab id="resourceLib">
+          <md-tab-label> From Resource Library</md-tab-label>
+          <md-tab-body>
+            <md-content class="md-padding">
+              <resource-library-listing model="ctrl.createVoiceModel"></resource-library-listing>
+            </md-content>
+          </md-tab-body>
+        </md-tab> -->
+      </md-tabs>
+      <div class="form-group">
+        <div>
+          <md-button ng-disabled="!ctrl.createVoiceBtnEnabled" ng-click="ctrl.createVoiceBtn()" name="submit" class="md-raised md-primary">{{ ctrl.createVoiceBtnEnabled ? 'Create Voice' : 'Creating Voice...' }}
+          </md-button>
+        </div>
+      </div>
+    </form>
+    </md-content>
+  </div>
+</div>

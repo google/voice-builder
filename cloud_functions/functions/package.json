@@ -1,0 +1,21 @@
+{
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "dependencies": {
+    "@google-cloud/storage": "^1.6.0",
+    "firebase-admin": "^5.10.0",
+    "firebase-functions": "^0.7.0",
+    "googleapis": "^22.2.0",
+    "moment": "^2.21.0"
+  },
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint *.js",
+    "fix": "./node_modules/.bin/eslint *.js --fix"
+  },
+  "private": true,
+  "devDependencies": {
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0"
+  }
+}

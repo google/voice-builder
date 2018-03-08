@@ -1,0 +1,10 @@
+{
+  "extends": ["airbnb-base", "plugin:jasmine/recommended"],
+  "rules": {
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "no-console": ["off"],
+    "arrow-parens": ["error", "always"]
+  },
+  "env": {"jasmine": true},
+  "plugins": ["jasmine"]
+}

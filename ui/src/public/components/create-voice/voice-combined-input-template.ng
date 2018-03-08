@@ -1,0 +1,9 @@
+<div layout-gt-sm="row">
+  <md-input-container class="md-block" flex="70">
+    <voice-input field-name="{{filePathFieldName}}" model-name="filePath"></voice-input>
+  </md-input-container>
+  <md-input-container class="md-block" flex="30">
+    <voice-select field-name="{{fileTypeFieldName}}" model-name="fileType" option-name="fileTypeOptions">
+    </voice-select>
+  </md-input-container>
+</div>

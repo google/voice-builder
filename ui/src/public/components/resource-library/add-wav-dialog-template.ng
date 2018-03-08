@@ -1,0 +1,41 @@
+<md-dialog aria-label="Add new WavSet">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Add new WavSet</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content" style="min-width: 960px">
+        <md-input-container class="md-block">
+          <voice-input field-name="Name" model-name="wavSetName"></voice-input>
+        </md-input-container>
+
+        <md-input-container class="md-block">
+          <voice-input field-name="Path" model-name="wavSetPath"></voice-input>
+        </md-input-container>
+
+        <div layout-lg="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <voice-select field-name=" Lang Id" model-name="type" option-name="typeList"></voice-select>
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <voice-select field-name="Output Format" model-name="outputFormat" option-name="outputFormatList"></voice-select>
+          </md-input-container>
+        </div>
+        <md-input-container class="md-block">
+          <voice-input field-name="Notes" model-name="notes"></voice-input>
+        </md-input-container>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout-lg="row">
+      <md-button ng-click="close()">close</md-button>
+      <md-button id="uploadButton" ng-click="upload()"> Start upload </md-button>
+      </div>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

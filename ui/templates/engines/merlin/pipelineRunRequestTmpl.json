@@ -1,0 +1,9 @@
+{
+  "pipelineArgs": {
+    "projectId": "<DO_NOT_EDIT>",
+    "logging": {"gcsPath": "<DO_NOT_EDIT>"},
+    "labels": {"voice-builder": ""},
+    "inputs": {},
+    "outputs": {}
+  }
+}

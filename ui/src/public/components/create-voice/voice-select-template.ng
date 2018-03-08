@@ -1,0 +1,5 @@
+<label> {{fieldName}} </label>
+<md-select ng-model="modelName">
+  <md-option ng-value="value" ng-repeat="value in optionName"
+    ng-selected="optionName[0]">{{ value }}</md-option>
+</md-select>

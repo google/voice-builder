@@ -1,0 +1,34 @@
+{
+  "name": "voicebuilder_model_server",
+  "version": "1.0.0",
+  "description": "the model server for voicebuilder",
+  "keywords": [
+    "voicebuilder",
+    "model"
+  ],
+  "dependencies": {
+    "@google-cloud/pubsub": "^0.14.8",
+    "@google-cloud/storage": "^1.6.0",
+    "body-parser": "^1.18.2",
+    "compression": "^1.7.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "googleapis": "^22.2.0",
+    "gunzip-maybe": "^1.4.1",
+    "tar-fs": "^1.16.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.10.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jasmine": "^2.9.1",
+    "jasmine": "^2.8.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "run_prod": "NODE_ENV=production yarn start",
+    "lint": "./node_modules/.bin/eslint *.js tests/*.js",
+    "fix": "./node_modules/.bin/eslint  *.js tests/*.js --fix",
+    "test": "./node_modules/.bin/jasmine --config=jasmine.json"
+  }
+}

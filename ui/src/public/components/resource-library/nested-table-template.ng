@@ -1,0 +1,37 @@
+<table>
+  <tr>
+    <td><b>Resource Path: </b></td>
+    <td>{{parentResource.Path}}</td>
+  </tr>
+  <tr>
+    <td><b>Speakers: </b></td>
+    <td>{{parentResource.Speakers}}</td>
+  </tr>
+  <tr>
+    <td><b>Created By: </b></td>
+    <td>{{parentResource.CreatedBy}}</td>
+  </tr>
+  <tr>
+    <td><b>Notes: </b></td>
+    <td>{{parentResource.Notes}}</td>
+  </tr>
+</table>
+<table id="row_{{entityId}}" class="bordered highlight">
+  <thead>
+    <th>Type</th>
+    <th>Original Path</th>
+    <th>Format</th>
+    <th>Uploaded Time</th>
+    <th>Created By</th>
+    <th>Notes</th>
+    <th></th>
+  </thead>
+</table>
+<button type="button" class="btn btn-primary"
+        data-toggle="modal" data-target="#addResourceModal-{{entityId}}">
+  Add other resources
+</button>
+<button type="button" class="btn btn-danger"
+        ng-click="deleteWavResource()">Delete</button>
+<add-resource-dialog entity-id="{{entityId}}"></add-resource-dialog>
+<build-voice-dialog></build-voice-dialog>

@@ -1,0 +1,31 @@
+{
+  "auth": "<DO_NOT_EDIT>",
+  "project": "<DO_NOT_EDIT>",
+  "zone": "<DO_NOT_EDIT>",
+  "resource": {
+    "name": "<DO_NOT_EDIT>",
+    "machineType": "zones/<DO_NOT_EDIT>/machineTypes/n1-standard-1",
+    "disks": [{
+      "boot": true,
+      "autodelete": true,
+      "initializeParams": {
+        "diskSizeGb": 100,
+        "sourceImage": "projects/cos-cloud/global/images/cos-stable-63-10032-60-0"
+      }
+    }],
+    "networkInterfaces": [{
+      "network": "global/networks/default",
+      "accessConfigs": [{"type": "ONE_TO_ONE_NAT", "name": "External NAT"}]
+    }],
+    "serviceAccounts": [{
+      "email": "<DO_NOT_EDIT>",
+      "scopes": ["https://www.googleapis.com/auth/cloud-platform"]
+    }],
+    "metadata": {
+      "items": [{
+        "key": "gce-container-declaration",
+        "value": "<containerManifest>"
+      }]
+    }
+  }
+}

@@ -1,0 +1,2 @@
+<label> {{fieldName}} </label>
+<input ng-model="modelName" name="name" type="text"></input>

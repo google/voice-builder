@@ -1,0 +1,24 @@
+<div layout="column">
+  <div layout="row">
+    <pre>{{text}}</pre>
+  </div>
+  <div layout="row">
+    <div flex="15">
+      <md-button ng-disabled="disablePlay" class="md-raised md-primary" ng-click="wavesurfer.playPause()">
+        <span id="play" ng-show="paused">
+          Play
+        </span>
+        <span id="pause" ng-show="!paused">
+          Pause
+        </span>
+      </md-button>
+    </div>
+    <div flex="85">
+      <div>
+        <div id="wavesurfer"></div>
+        <div id="timeline"></div>
+        <div id="wave-spectrogram"></div>
+      </div>
+    </div>
+  </div>
+</div>

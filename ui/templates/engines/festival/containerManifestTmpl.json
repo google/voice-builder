@@ -1,0 +1,15 @@
+{
+  "spec": {
+    "containers": [{
+      "name": "festival",
+      "image": "docker.io/langtech/festival-synth-server:v1",
+      "tty": true,
+      "stdin": true,
+      "env": [{
+        "name": "MODEL_GCS_PATH",
+        "value": "<DO_NOT_EDIT>"
+      }]
+    }],
+    "restartPolicy": "Always"
+  }
+}

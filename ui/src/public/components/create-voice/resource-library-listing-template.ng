@@ -1,0 +1,45 @@
+<div>
+  <div layout-gt-sm="row">
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>Lang id</label>
+      <md-select ng-model="langId" ng-change="langIdChangeHandler()">
+        <md-option ng-value="element" ng-repeat="element in langIdList">
+            {{element}}
+        </md-option>
+      </select>
+    </md-input-container>
+    <md-input-container class="md-block" flex-gt-sm>
+        <label class="control-label">Wav Set</label>
+      <md-select  ng-change="wavSetChangeHandler()" ng-model="wavSet"></md-radio-group>
+        <md-option ng-value="element" ng-repeat="element in wavSetList"> 
+          {{element.Name}} ({{element.Path}} {{element.UploadedTime}}
+        </md-option>
+      </md-select>
+    </md-input-container>
+    <md-input-container class="md-block" flex-gt-sm>
+      <label class="control-label">Wav Info</label>
+      <md-select  ng-change="wavsInfoChangeHandler()" ng-model="wavsInfo">
+        <md-option ng-value="element" ng-repeat="element in nestedResourceList | filter:{Type:'WAVS_INFO'}"> 
+          {{element.CreatedBy}} {{element.Name}} ({{element.Path}} {{element.UploadedTime}}
+        </md-option>
+      </md-select>
+    </md-input-container>
+  </div>
+  <md-subheader class="md-primary">
+      <h2>Cache Control</h2>
+    </md-subheader>
+  <md-radio-group ng-model="cache" ng-change="cacheSelectChangeHandler()">
+    <md-radio-button value="none" class="md-primary">None</md-radio-button>
+    <md-radio-button value="{{CONSTANTS.ENABLE_SAVE_FEATURES_KEY}}"> Cache New Voice Features </md-radio-button>
+    <md-radio-button value="{{CONSTANTS.ENABLE_LOAD_CACHED_FEATURES_KEY}}">Use cached Voice Features</md-radio-button>
+  </md-radio-group>
+  <!-- TODO(pasindu): Check why the constant does not work here. -->
+  <md-input-container ng-repeat="(type, label) in resourceLibraryOptions" class="md-block" >
+    <label class="control-label">{{label}}</label>
+    <md-select  ng-change="wavsInfoChangeHandler()" ng-model="wavsInfo">
+      <md-option ng-value="element" ng-repeat="element in nestedResourceList | filter:{Type:'{{type}}'}"> 
+        {{element.CreatedBy}} {{element.Name}} ({{element.Path}} {{element.UploadedTime}}
+      </md-option>
+    </md-select>
+  </md-input-container>
+</div>

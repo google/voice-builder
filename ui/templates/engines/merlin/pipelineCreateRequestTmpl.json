@@ -1,0 +1,111 @@
+{
+  "projectId": "<DO_NOT_EDIT>",
+  "name": "Standard merlin pipeline",
+  "description": "Standard merlin pipeline",
+  "inputParameters": [
+    {
+      "name": "INPUT_WAV",
+      "defaultValue": "gs://voice-builder-public/examples/sinhala/wav.tar.gz",
+      "localCopy": {
+        "disk": "datadisk",
+        "path": "wav.tar.gz"
+      }
+    },
+    {
+      "name": "PHONOLOGY_JSON",
+      "defaultValue": "gs://voice-builder-public/examples/sinhala/phonology.json",
+      "localCopy": {
+        "disk": "datadisk",
+        "path": "ipa_phonology.json"
+      }
+    },
+    {
+      "name": "LEXICON_SCM",
+      "defaultValue": "gs://voice-builder-public/examples/sinhala/lexicon.scm",
+      "localCopy": {
+        "disk": "datadisk",
+        "path": "lexicon.scm"
+      }
+    },
+    {
+      "name": "TEXT_LINE",
+      "defaultValue": "gs://voice-builder-public/examples/sinhala/txt.done.data",
+      "localCopy": {
+        "disk": "datadisk",
+        "path": "txt.done.data"
+      }
+    },
+    {
+      "name": "VOICE_SPEC",
+      "defaultValue": "gs://voice-builder-public/examples/sinhala/voiceSpec.json",
+      "localCopy": {
+        "disk": "datadisk",
+        "path": "voiceSpec.json"
+      }
+    }
+  ],
+  "outputParameters": [
+    {
+      "name": "OUTPUT_VOICE",
+      "defaultValue": "gs://DO_NOT_EDIT",
+      "localCopy": {
+        "disk": "datadisk",
+        "path": "built-voice.tar.gz"
+      }
+    }
+  ],
+  "resources": {
+    "minimumCpuCores": 10,
+    "minimumRamGb": 16,
+    "bootDiskSizeGb": 100,
+    "zones": [
+      "asia-east1-b",
+      "asia-east1-a",
+      "asia-east1-c",
+      "asia-northeast1-a",
+      "asia-northeast1-c",
+      "asia-northeast1-b",
+      "asia-southeast1-b",
+      "asia-southeast1-a",
+      "australia-southeast1-b",
+      "australia-southeast1-c",
+      "australia-southeast1-a",
+      "europe-west1-c",
+      "europe-west1-b",
+      "europe-west1-d",
+      "europe-west2-a",
+      "europe-west2-c",
+      "europe-west2-b",
+      "europe-west3-c",
+      "europe-west3-a",
+      "europe-west3-b",
+      "europe-west4-c",
+      "europe-west4-b",
+      "us-central1-c",
+      "us-central1-a",
+      "us-central1-f",
+      "us-central1-b",
+      "us-east1-c",
+      "us-east1-b",
+      "us-east1-d",
+      "us-east4-c",
+      "us-east4-a",
+      "us-east4-b",
+      "us-west1-a",
+      "us-west1-b",
+      "us-west1-c"
+    ],
+    "disks": [
+      {
+        "name": "datadisk",
+        "type": "PERSISTENT_HDD",
+        "sizeGb": 100,
+        "mountPoint": "/usr/local/src/voice/data/festvox"
+      }
+    ]
+  },
+  "docker": {
+    "imageName": "docker.io/langtech/base-merlin:v1",
+    "cmd": "/usr/local/src/language-resources/docker-images/merlin/entry.sh"
+  }
+}

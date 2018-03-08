@@ -1,0 +1,27 @@
+<div>
+  <div class="container">
+    <md-subheader class="md-primary">
+      <h1>List of Jobs</h1>
+    </md-subheader>
+    <table class="bordered highlight">
+      <thead>
+        <th>Id</th>
+        <th>Voice Name</th>
+        <th>Created by</th>
+        <th>Status</th>
+        <th>Export start time</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="job in ctrl.jobs | orderBy:ctrl.sortJobComparable">
+          <td>
+            <a href="/#!/{{job.id}}">{{job.id}}</a>
+          </td>
+          <td> {{job.metadata.voiceName}} </td>
+          <td> {{job.metadata.createdBy}} </td>
+          <td> {{job.metadata.status}} </td>
+          <td> {{job.timeCreatedLocal}} </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

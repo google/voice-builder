@@ -1,0 +1,30 @@
+<!doctype html>
+<html ng-app="app" lang="en">
+
+<head>
+    <title>Dashboard</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.material.min.css">
+    <!-- Font Awesome css -->
+    <link rel="stylesheet" href="//www.gstatic.com/external_hosted/font_awesome/v4_2_0/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/">
+</head>
+
+<body>
+    <md-nav-bar aria-label="navBar" md-selected-nav-item="currentNavItem">
+        <a href="/" class="logo">
+            <span>Voice</span>Builder
+        </a>
+        <md-nav-item md-nav-href="/#!/" name="jobs">Jobs</md-nav-item>
+        <md-nav-item md-nav-href="/#!/create_voice" name="create_voice">Create Voice</md-nav-item>
+        <!-- Uncomment when resource library is enabled
+        <md-nav-item md-nav-href="/#!/resource_library" name="resource_library">Resource Library</md-nav-item>
+        -->
+    </md-nav-bar>
+    <md-content style="height: 90%">
+        <div ng-view></div>
+    </md-content>
+</body>
+
+</html>

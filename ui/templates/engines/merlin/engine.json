@@ -1,0 +1,77 @@
+{
+  "engine_id": "merlin_standard",
+  "name": "Merlin standard",
+  "fileTypes":{
+    "lexicon":["TSV"],
+    "phonology":["PHONOLOGY_PARAMS","JSON_EXTERNAL_PHONOLOGY"],
+    "wavs":["TAR"],
+    "wavsInfo":["LINE_INDEX"]
+  },
+  "params": [
+    {
+      "key": "duration.Architecture.switch_to_keras",
+      "value": "False"
+    },
+    {
+      "key": "duration.Architecture.hidden_layer_size",
+      "value": "[1024, 1024, 1024, 1024, 1024, 1024]"
+    },
+    {
+      "key": "duration.Architecture.hidden_layer_type",
+      "value": "['TANH', 'TANH', 'TANH', 'TANH', 'TANH', 'TANH']",
+      "description": ""
+    },
+    {
+      "key": "duration.Architecture.optimizer",
+      "value": "sgd"
+    },
+    {
+      "key": "duration.Architecture.warmup_epoch",
+      "value": "5"
+    },
+    {
+      "key": "duration.Architecture.training_epochs",
+      "value": "10"
+    },
+    {
+      "key": "duration.Architecture.dropout_rate",
+      "value": "0.0"
+    },
+    {
+      "key": "duration.Architecture.batch_size",
+      "value": "256"
+    },
+    {
+      "key": "acoustic.Architecture.switch_to_keras",
+      "value": "False"
+    },
+    {
+      "key": "acoustic.Architecture.hidden_layer_size",
+      "value": "[1024, 1024, 1024, 1024, 1024, 1024]"
+    },
+    {
+      "key": "acoustic.Architecture.hidden_layer_type",
+      "value": "['TANH', 'TANH', 'TANH', 'TANH', 'TANH', 'TANH']"
+    },
+    {
+      "key": "acoustic.Architecture.optimizer",
+      "value": "sgd"
+    },
+    {
+      "key": "acoustic.Architecture.warmup_epoch",
+      "value": "5"
+    },
+    {
+      "key": "acoustic.Architecture.training_epochs",
+      "value": "10"
+    },
+    {
+      "key": "acoustic.Architecture.dropout_rate",
+      "value": "0.0"
+    },
+    {
+      "key": "acoustic.Architecture.batch_size",
+      "value": "256"
+    }
+  ]
+}

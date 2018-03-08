@@ -1,0 +1,83 @@
+<div class="container">
+  <md-subheader class="md-primary">
+    <h1>Job {{ctrl.job.id}} Details</h1>
+  </md-subheader>
+  <ul class="collection">
+    <li layout="row" class="collection-item">
+      <div flex="20" flex-md="35">Job Id</div>
+      <div flex="80" flex-md="65">{{ctrl.job.id}} </div>
+    </li>
+    <li layout="row" class="collection-item">
+      <div flex="20" flex-md="35"> Voice Name</div>
+      <div flex="80" flex-md="65">{{ctrl.job.voice_name}} </div>
+    </li>
+    <li layout="row" class="collection-item">
+      <div flex="20" flex-md="35">Status</div>
+      <div flex="80" flex-md="35">{{ctrl.job.status}} </div>
+    </li>
+    <li layout="row" class="collection-item">
+      <div flex="20" flex-md="35" class="title">Export start time</div>
+      <div flex="80" flex-md="65" class="content">{{ctrl.job.timeCreated}} </div>
+    </li>
+    <li layout="row" class="collection-item">
+      <div flex="20" flex-md="35" class="title">Created by</div>
+      <div flex="80" flex-md="65" class="content">{{ctrl.job.createdBy}} </div>
+    </li>
+    <li layout="row" class="collection-item">
+      <div flex="20" flex-md="35" class="title">Model Server</div>
+      <div flex="80" flex-md="65" class="content">
+        <md-button ng-click="ctrl.deployModelServer()" class="md-raised md-primary">
+          Deploy
+        </md-button>
+      </div>
+    </li>
+    <li layout="row" class="collection-item">
+      <div flex="20" flex-md="35" class="title">More details</div>
+      <div flex="80" flex-md="65" class="content">
+        <a href="/api/job/{{ctrl.job.id}}/logs">Pipeline API log</a>&nbsp;|
+        <a href="/api/job/{{ctrl.job.id}}/logs?type=stdout">Stdout log</a>&nbsp;|
+        <a href="/api/job/{{ctrl.job.id}}/logs?type=stderr">Stderr log</a>
+      </div>
+    </li>
+  </ul>
+
+  <md-content>
+    <md-tabs class="md-dynamic-height md-border-bottom" md-selected="data.selectedIndex" md-align-tabs="top">
+      <md-tab id="tab1">
+        <md-tab-label>Synthesize Audio</md-tab-label>
+        <md-tab-body>
+          <md-content class="md-padding">
+            <form class="col s12">
+              <md-input-container class="md-block" flex>
+                <textarea class="synth-text" rows="1" ng-model="ctrl.ttsText" placeholder="Enter text" name="tts_text"></textarea>
+              </md-input-container>
+              <div layout="column">
+                <div flex>
+                  <md-button ng-click="ctrl.synthesizeAudio()" class="md-raised md-primary">
+                    Synthesize
+                  </md-button>
+                  <md-checkbox ng-model="ctrl.isMultiLine"> Muliple test sentences </md-checkbox>
+                  <md-checkbox ng-model="ctrl.showSpectrogram"> Show Spectrogram </md-checkbox>
+                </div>
+              </div>
+            </form>
+            <div flex ng-repeat="synth in ctrl.synthsDetails" class="voice-row">
+              <wave-player jobid={{ctrl.job.id}}
+                text={{synth.text}}
+                ng-src={{synth.data}}
+                spectrogram={{ctrl.showSpectrogram}}
+                height="64"
+              />
+            </div>
+          </md-content>
+        </md-tab-body>
+      </md-tab>
+      <md-tab id="tab2">
+        <md-tab-label>Voice Specification</md-tab-label>
+        <md-tab-body>
+          <pre>{{ctrl.prettyPrintJob}}</pre>
+        </md-tab-body>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+</div>

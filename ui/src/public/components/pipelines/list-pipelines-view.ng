@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="panel panel-default">
+    <md-subheader class="md-primary">
+      <h1>Pipelines List</h1>
+    </md-subheader>
+    <md-content>
+      <md-list flex>
+        <md-list-item class="md-3-line" ng-repeat="pipeline in ctrl.pipelines.slice().reverse()"  ng-click="ctrl.getDetail(pipeline.name)">
+          <div class="md-list-item-text pipline-box" layout="column">
+            <h3>Job</h3>
+            <div layout="row">
+              <div flex="80" layout="column">
+                <span>{{pipeline.metadata.runtimeMetadata.computeEngine.instanceName}}</span>
+                <p>{{pipeline.name}}</p>
+              </div>
+              <div flex="20">
+                  <div class="green" ng-show={{pipeline.done}}>DONE</div>
+                  <div class="red" ng-hide={{pipeline.done}}>IN PROGRESS</div>
+              </div>
+            </div>
+          </div>
+        </md-list-item>
+      </md-list>
+    </md-content>
+  </div>
+</div>

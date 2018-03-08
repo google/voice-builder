@@ -1,0 +1,4 @@
+<div class="container">
+  <div> <a ng-href={{ctrl.containerLink}}>container instance link</a></div>
+  <pre> {{ctrl.pipelineStr}} </pre>
+</div>
