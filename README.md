@@ -18,62 +18,92 @@ data.
 
 ### Prerequisites
 
-1. Create a project on GCP
+1. Create a project on [Google Cloud Platform (GCP)](https://cloud.google.com).
+
+    > If you don't have an account yet, please create one for yourself.
 
 2. Enable billing and request more quota for your project
 
-3. Go to Firebase.com and import the project to firebase platform
+3. Install [Docker](https://docs.docker.com/install/)
 
-4. Install gcloud cmd line tool by installing [Cloud
+4. Go to [firebase.com](www.firebase.com) and import the project to firebase platform
+
+    > If you don't have an account yet, please create one for yourself.
+
+5. Install gcloud cmd line tool by installing [Cloud
    SDK](https://cloud.google.com/sdk/downloads)
 
-5. Install [firebase cmd line tool](https://github.com/firebase/firebase-tools)
+6. Install [Node.js](https://nodejs.org/en/)
 
-6. [Optional] Setup your own data exporter
+7. Install [firebase cmd line tool](https://github.com/firebase/firebase-tools)
 
-7. Enable all the following GCP services:
+8. Enable all the following GCP services:
+    - Appengine API
+    - Firebase Cloud Function
+    - Genomics Pipeline API
 
-  - Appengine API
-  - Firebase Cloud Function
-  - Genomics Pipeline API
+    Use [this url](https://console.cloud.google.com/flows/enableapi?apiid=genomics,storage_component,storage_api,compute_component,containerregistry.googleapis.com) to enable them all at once.
 
-  Use [this url](https://console.cloud.google.com/flows/enableapi?apiid=genomics,storage_component,storage_api,compute_component,containerregistry.googleapis.com) to enable them all at once.
+    Usually, it would take a few minutes to enable APIs and
+		GCP will bring you to another page to set credentials for these.
+    Please just skip and close the page as we don't need any new credential setting.
+
+9. [Optional] Setup your own [custom data exporter](https://github.com/google/voice-builder#optional-using-custom-data-exporter)
 
 ### Deployment
 
-1. Open /deploy.sh and edit the following variables:
+> If you have not completed all prerequisites, please do so before going further in the following steps.
 
-  - PROJECT_NAME: your created GCP project's name from Prerequisite 1) e.g. vb-test-project
-  - PROJECT_ID: your created GCP project's id from Prerequisite 1) e.g. vb-test-project
-  - GCP_SERVICE_ACCOUNT_EMAIL: Use Compute Engine service account (you can find
-    one under GCP service account page) e.g.
+1. Clone this project to your current directory by:
+
+    ```
+    git clone https://github.com/google/voice-builder.git && cd voice-builder
+    ```
+
+2. If you haven't logged in to your account via gcloud yet, please log in by:
+
+    ```
+    gcloud auth login
+    ```
+
+3. Also, if you haven't logged in to your account via firebase , please log in by:
+
+    ```
+    firebase login --no-localhost
+    ```
+
+3. Open `deploy.sh` and edit the following variables:
+
+    - PROJECT_NAME: your created GCP project's name from Prerequisite 1) e.g. vb-test-project
+    - PROJECT_ID: your created GCP project's id from Prerequisite 1) e.g. vb-test-project
+    - GCP_SERVICE_ACCOUNT_EMAIL: Use Compute Engine service account (you can find
+    one by cliking on top left menu under "IAM & admin > Service accounts") e.g.
     123456778911-compute@developer.gserviceaccount.com
 
-2. Create GCS buckets for Voice Builder to store each job data
+4. Create GCS buckets for Voice Builder to store each job data
 
-  ```
-  ./deploy.sh initial_setup
-  ```
+    ```
+    ./deploy.sh initial_setup
+    ```
 
-3. Deploy cloud functions component
+5. Deploy cloud functions component
 
-  ```
-  ./deploy.sh cloud_functions
-  ```
+    ```
+    ./deploy.sh cloud_functions
+    ```
 
 4. Deploy ui component
 
-  ```
-  ./deploy.sh ui create
-  ```
-  After the deployment, you should get an IP that you can access from command
-  line's result (EXTERNAL_IP). You can access your instance of Voice Builder
-  by visiting http://EXTERNAL_IP:3389 in
-  your browser.
+    ```
+    ./deploy.sh ui create
+    ```
+    After the deployment, you should get an IP that you can access from command
+    line's result (EXTERNAL_IP). You can access your instance of Voice Builder
+    by visiting http://EXTERNAL_IP:3389 in
+    your browser.
 
-5. Create an example voice using Festival engine
-
-  At this step, you should have all components in place and can access the UI
+### Create an example voice
+At this step, you should have all components in place and can access the UI
   at http://EXTERNAL_IP:3389. VoiceBuilder initially provides you with two
   example TTS engines ([Festival](http://www.cstr.ed.ac.uk/projects/festival/)
   and [Merlin](http://www.cstr.ed.ac.uk/projects/merlin/)) and public data
@@ -122,33 +152,34 @@ Firstly, you need to give your data exporter access to GCS buckets.
 
 1. Open /deploy.sh and edit the following variables:
 
-  - DATA_EXPORTER_SERVICE_ACCOUNT: getting it by creating a new service
-    account for your data exporter to access GCS buckets.
+    - DATA_EXPORTER_SERVICE_ACCOUNT: getting it by creating a new service
+      account for your data exporter to access GCS buckets.
 
 2. Run command to give DATA_EXPORTER_SERVICE_ACCOUNT an ACL access to GCS buckets
 
-  ```
-  ./deploy.sh acl_for_data_exporter
-  ```
+    ```
+    ./deploy.sh acl_for_data_exporter
+    ```
 
-Secondly, you need to set your data exporter's url in config.js so that
-Voice Builder knows where to send Voice Specification information to.
+    Secondly, you need to set your data exporter's url in config.js so that
+    Voice Builder knows where to send Voice Specification information to.
 
 1. Open /config.js and add DATA_EXPORTER_API to the config as follows:
 
-  ```
-  DATA_EXPORTER_API: {
-    BASE_URL: '<DATA_EXPORTER_URL>',
-    API_KEY: '<DATA_EXPORTER_API_KEY>',
-  }
-  ```
-  where BASE_URL is your data exporter url and API_KEY is the api key of your data exporter.
+    ```
+    DATA_EXPORTER_API: {
+      BASE_URL: '<DATA_EXPORTER_URL>',
+      API_KEY: '<DATA_EXPORTER_API_KEY>',
+    }
+    ```
+    where BASE_URL is your data exporter url and API_KEY is the api key of your data exporter.
 
 2. Redeploy Voice Builder UI instance so that it now has a new config and knows
   where to send Voice Specification info. to your data exporter
 
-  ```
-  ./deploy.sh ui update
-  ```
+    ```
+    ./deploy.sh ui update
+    ```
 
-3. Try to create a new job! Voice Builder should now send a request to your DATA_EXPORTER_URL with the created job's Voice Specification.
+3. Try to create a new job! Voice Builder should now send a request to your DATA_EXPORTER_URL
+	with the created job's Voice Specification.

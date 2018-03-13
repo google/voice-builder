@@ -20,7 +20,7 @@ const config = {
   GCP_SERVICE_ACCOUNT_EMAIL: '<GCP_SERVICE_ACCOUNT_EMAIL>',
   ZONE: '<ZONE>',
   GCS: {
-    JOB_BUCKET: '<PROJECT_NAME>-jobs',
+    JOB_BUCKET: '<JOB_BUCKET_NAME>',
   },
   TTS_ENGINES: [
     {

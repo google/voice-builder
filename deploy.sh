@@ -14,13 +14,14 @@
 # limitations under the License.
 
 PROJECT_NAME="<PROJECT_NAME>"
+PROJECT_NAME_LOWERCASE="${PROJECT_NAME,,}"
 PROJECT_ID="<PROJECT_ID>"
 GCP_SERVICE_ACCOUNT_EMAIL="<GCP_SERVICE_ACCOUNT_EMAIL>"
 DATA_EXPORTER_SERVICE_ACCOUNT="<DATA_EXPORTER_SERVICE_ACCOUNT>"
 
 CONTAINER_REGISTRY="gcr.io/${PROJECT_ID}"
-JOB_BUCKET="${PROJECT_NAME}-jobs"
-RESOURCE_LIBRARY_BUCKET="${PROJECT_NAME}-resource-library"
+JOB_BUCKET_NAME="${PROJECT_NAME_LOWERCASE}-jobs"
+RESOURCE_LIBRARY_BUCKET="${PROJECT_NAME_LOWERCASE}-resource-library"
 LOCATION="asia"
 ZONE="asia-east1-c"
 
@@ -43,17 +44,17 @@ sub_initial_setup(){
   echo "Initial setup..."
   echo "Setting up a job bucket and a resource library bucket..."
   gsutil mb -l "${LOCATION}" -p "${PROJECT_ID}" \
-    -c multi_regional "gs://${JOB_BUCKET}"
+    -c multi_regional "gs://${JOB_BUCKET_NAME}"
   gsutil mb -l "${LOCATION}" -p "${PROJECT_ID}" \
     -c multi_regional "gs://${RESOURCE_LIBRARY_BUCKET}"
   echo "Setting a job counter (appData/jobCounter.txt) to 0..."
   echo "0" > /tmp/jobCounter.txt && \
-    gsutil cp /tmp/jobCounter.txt "gs://${JOB_BUCKET}/appData/jobCounter.txt"
+    gsutil cp /tmp/jobCounter.txt "gs://${JOB_BUCKET_NAME}/appData/jobCounter.txt"
 }
 
 sub_acl_for_data_exporter(){
   echo "Allowing Data Exporter to access the buckets..."
-  gsutil acl ch -u "${DATA_EXPORTER_SERVICE_ACCOUNT}:WRITE" "gs://${JOB_BUCKET}"
+  gsutil acl ch -u "${DATA_EXPORTER_SERVICE_ACCOUNT}:WRITE" "gs://${JOB_BUCKET_NAME}"
   gsutil acl ch -u "${DATA_EXPORTER_SERVICE_ACCOUNT}:WRITE" "gs://${RESOURCE_LIBRARY_BUCKET}"
 }
 
@@ -117,7 +118,7 @@ copy_config(){
   temp_config="$(mktemp)"
 
   sed "s/<PROJECT_ID>/${PROJECT_ID}/g" "${DIR}/config.js" |
-  sed "s/<PROJECT_NAME>/${PROJECT_NAME}/g" |
+  sed "s/<JOB_BUCKET_NAME>/${JOB_BUCKET_NAME}/g" |
   sed "s/<GCP_SERVICE_ACCOUNT_EMAIL>/${GCP_SERVICE_ACCOUNT_EMAIL}/g" |
     sed "s/<ZONE>/${ZONE}/g" > "${temp_config}"
 
