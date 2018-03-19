@@ -143,8 +143,8 @@ before feeding them into TTS algorithms. For example:
 
 Voice Builder gives you the flexibility to add your own data exporter which you
 can use to manipulate data before running the actual TTS algorithm. Your custom
-data exporter will get a Voice Specification containing file location, chosen
-TTS algorithm, tuning parameters, etc. You can use these information to
+data exporter will get a [Voice Specification](https://github.com/google/voice-builder#voice-specification)
+containing file location, chosen TTS algorithm, tuning parameters, etc. You can use these information to
 manipulate/convert your data. In the end, your data exporter should put all
 necessary files into the designated job folder to trigger the actual TTS algorithm to run.
 
@@ -183,3 +183,111 @@ Firstly, you need to give your data exporter access to GCS buckets.
 
 3. Try to create a new job! Voice Builder should now send a request to your DATA_EXPORTER_URL
 	with the created job's Voice Specification.
+
+
+### Voice Builder specification
+`VoiceBuildingSpecification` is a JSON definition of the voice specification. This specification is created by the Voice Builder backend when a user triggers a voice building request from the UI.  It can be used by the data exporter (passed to the data exporter via its API) to convert files and by the TTS engine for its training parameters.
+
+
+```
+{
+  "id": int,
+  "voice_name": string,
+  "created_by": string,
+  "job_folder": string,
+  "lexicon_path": object(Path),
+  "phonology_path": object(Path),
+  "wavs_path": object(Path),
+  "wavs_info_path": object(Path),
+  "sample_rate": int,
+  "tts_engine": string,
+  "engine_params": [object(EngineParam)],
+}
+```
+
+Fields       | Description
+------------ | -------------
+id | Unique global job id.
+voice_name | User friendly voice name (e.g. multi speaker voice).
+created_by | The name of the user who created the voice.
+job_folder | The path to the GCS job folder. This is where all the data related to the job is store.
+lexicon_path | Path to the lexicon.
+phonology_path | Path to the phonology.
+wavs_path | Path to the wavs (should be a tar file).
+wavs_info_path | Path to the file containing mapping of wav name and prompts.
+sample_rate | Sample rate at which the voice should be built.
+tts_engine | Type of TTS engine to train the voice. The value for this would be the engine_id from the selected TTS engine engine.json.
+engine_params | The additional parameters for tts engine.
+
+##### EngineParam
+`EngineParam` contains a parameter for TTS Backend engine.
+```
+{
+  "key": string,
+  "value": string
+}
+```
+Fields       | Description
+------------ | -------------
+key | Parameter key.
+value | Value for the parameter key.
+
+##### Path
+`Path` contains information about the file path.
+```
+{
+  "path": string
+  "file_type": string
+}
+```
+Fields       | Description
+------------ | -------------
+path | Path to the file.
+file_type | Format of the file.
+
+
+##### Example
+For example, if you set up your data exporter, when you create a voice
+using our predefined Festival engine, Voice Builder will send the request
+body similar to below to your data exporter. Your data exporter then have
+to pre-process data and put them in `job_folder` location
+(which is `gs://your-voice-builder-jobs/1` in this example).
+After all necessary files are placed in the folder, the actual voice building
+process will begin automatically as expected.
+
+```
+{
+  "id": 1,
+  "voice_name": "my_voice",
+  "createdBy": "someone@somemail.com",
+  “job_folder”: "gs://your-voice-builder-jobs/1";
+  "engine_params": [
+    {
+      "key": "param_for_festival1",
+      "value": "50"
+    },
+    {
+      "key": "param_for_festival2",
+      "value": "30"
+    }
+  ],
+  "sample_rate": "22050",
+  "tts_engine": "festival",
+  "lexicon_path": {
+    "path": "gs://voice-builder-public/examples/sinhala/lexicon.scm",
+    "file_type": "SCM"
+  },
+  "phonology_path": {
+    "path": "gs://voice-builder-public/examples/sinhala/phonology.json",
+    "file_type": "JSON_EXTERNAL_PHONOLOGY"
+  },
+  "wavs_path": {
+    "path": "gs://voice-builder-public/examples/sinhala/wavs.tar.gz",
+    "file_type": "TAR"
+  },
+  "wavs_info_path": {
+    "path": "gs://voice-builder-public/examples/sinhala/txt.done.data",
+    "file_type": "LINE_INDEX"
+  },
+}
+```
