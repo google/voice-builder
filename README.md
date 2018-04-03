@@ -26,7 +26,7 @@ data.
 
 3. Install [Docker](https://docs.docker.com/install/)
 
-4. Go to [firebase.com](www.firebase.com) and import the project to firebase platform
+4. Go to [firebase.com](https://firebase.com) and import the project to firebase platform
 
     > If you don't have an account yet, please create one for yourself.
 
@@ -291,3 +291,8 @@ process will begin automatically as expected.
   },
 }
 ```
+
+## Additional Information
+
+-  [JSON Phonology](https://github.com/googlei18n/language-resources/blob/master/docs/JSON_PHONOLOGY.md)
+
