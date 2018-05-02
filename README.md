@@ -121,7 +121,7 @@ At this step, you should have all components in place and can access the UI
   3. Click on "JOBS" tab. Now, you should see a new job that you have just
     created. It usually takes 30mins to 1 hour to run. You can check the status
     of the job by clicking on the job id to see the job status page.
-  4. After an hour, you should see "Complete Voice Model Deployment" under
+  4. After an hour, you should see "Completed Voice Model Deployment" under
     the job status. This means the succesfully built model has been deployed
     to a voice synthesis server. Try putting in "hello" in the text input box
     at the bottom of the job status page and click "Synthesize" button.

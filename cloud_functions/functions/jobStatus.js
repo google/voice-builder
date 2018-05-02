@@ -159,15 +159,15 @@ module.exports = {
     text: 'Failed To Export Files',
   },
   _resource_export_successful: {
-    text: 'Start Training Voice Model',
+    text: 'Started Training Voice Model',
     callback: startPipelineJob,
   },
   'built-voice.tar.gz': {
-    text: 'Complete Voice Model Training',
+    text: 'Completed Voice Model Training',
     callback: createModelServer,
   },
   _voice_model_deployment_successful: {
-    text: 'Complete Voice Model Deployment',
+    text: 'Completed Voice Model Deployment',
   },
   _voice_model_deployment_failed: {
     text: 'Failed To Deploy Model',
