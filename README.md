@@ -274,19 +274,19 @@ process will begin automatically as expected.
   "sample_rate": "22050",
   "tts_engine": "festival",
   "lexicon_path": {
-    "path": "gs://voice-builder-public/examples/sinhala/lexicon.scm",
+    "path": "gs://voice-builder-public-data/examples/sinhala/lexicon.scm",
     "file_type": "SCM"
   },
   "phonology_path": {
-    "path": "gs://voice-builder-public/examples/sinhala/phonology.json",
+    "path": "gs://voice-builder-public-data/examples/sinhala/phonology.json",
     "file_type": "JSON_EXTERNAL_PHONOLOGY"
   },
   "wavs_path": {
-    "path": "gs://voice-builder-public/examples/sinhala/wavs.tar.gz",
+    "path": "gs://voice-builder-public-data/examples/sinhala/wavs.tar.gz",
     "file_type": "TAR"
   },
   "wavs_info_path": {
-    "path": "gs://voice-builder-public/examples/sinhala/txt.done.data",
+    "path": "gs://voice-builder-public-data/examples/sinhala/txt.done.data",
     "file_type": "LINE_INDEX"
   },
 }

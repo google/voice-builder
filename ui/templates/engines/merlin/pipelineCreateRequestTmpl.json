@@ -5,7 +5,7 @@
   "inputParameters": [
     {
       "name": "INPUT_WAV",
-      "defaultValue": "gs://voice-builder-public/examples/sinhala/wav.tar.gz",
+      "defaultValue": "gs://voice-builder-public-data/examples/sinhala/wav.tar.gz",
       "localCopy": {
         "disk": "datadisk",
         "path": "wav.tar.gz"
@@ -13,7 +13,7 @@
     },
     {
       "name": "PHONOLOGY_JSON",
-      "defaultValue": "gs://voice-builder-public/examples/sinhala/phonology.json",
+      "defaultValue": "gs://voice-builder-public-data/examples/sinhala/phonology.json",
       "localCopy": {
         "disk": "datadisk",
         "path": "ipa_phonology.json"
@@ -21,7 +21,7 @@
     },
     {
       "name": "LEXICON_SCM",
-      "defaultValue": "gs://voice-builder-public/examples/sinhala/lexicon.scm",
+      "defaultValue": "gs://voice-builder-public-data/examples/sinhala/lexicon.scm",
       "localCopy": {
         "disk": "datadisk",
         "path": "lexicon.scm"
@@ -29,7 +29,7 @@
     },
     {
       "name": "TEXT_LINE",
-      "defaultValue": "gs://voice-builder-public/examples/sinhala/txt.done.data",
+      "defaultValue": "gs://voice-builder-public-data/examples/sinhala/txt.done.data",
       "localCopy": {
         "disk": "datadisk",
         "path": "txt.done.data"
@@ -37,7 +37,7 @@
     },
     {
       "name": "VOICE_SPEC",
-      "defaultValue": "gs://voice-builder-public/examples/sinhala/voiceSpec.json",
+      "defaultValue": "gs://voice-builder-public-data/examples/sinhala/voiceSpec.json",
       "localCopy": {
         "disk": "datadisk",
         "path": "voiceSpec.json"
