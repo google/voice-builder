@@ -25,7 +25,7 @@ const CONSTANTS = {
   // Used to indicate that the user wants to load features.
   ENABLE_LOAD_CACHED_FEATURES_KEY: 'ENABLE_LOAD_CACHED_FEATURES',
   // Default location where example data is stored.
-  DEFAULT_DATA_BASE_PATH: 'gs://voice-builder-public/examples/sinhala',
+  DEFAULT_DATA_BASE_PATH: 'gs://voice-builder-public-data/examples/sinhala',
 };
 
 
