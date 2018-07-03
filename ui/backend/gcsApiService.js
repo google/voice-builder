@@ -38,6 +38,19 @@ const getCurrentJobId = () => {
   return file.download().then((data) => parseInt(data[0].toString('utf8'), 10));
 };
 
+const setJobStatus = (jobId, status) => {
+  jobBucket.file(`${jobId}_$folder$`).setMetadata({
+    metadata: {
+      status: status,
+    },
+  }).then(function(data) {
+    console.log(`The status of job ${jobId} is updated to "${status}"`);
+  }).catch((err) => {
+    console.error(`Failed to update status of ${jobId} with status "${status}"`);
+    console.error(err);
+  });
+}
+
 const saveNewJobId = (newJobId) => {
   const file = jobBucket.file(JOB_COUNTER_FILE);
   return file.save(newJobId.toString());
@@ -249,5 +262,6 @@ module.exports = {
   getModelServerSpecFile,
   initializeJobFolder,
   listJobFolders,
+  setJobStatus,
   saveNewJobId,
 };
