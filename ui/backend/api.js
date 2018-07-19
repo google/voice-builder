@@ -229,7 +229,11 @@ router.post('/create_voice', (req, res) => {
       console.error('Failed to create the voice.');
       console.error(err);
 
-      gcsApiService.setJobStatus(newJobId, "Failed creating voice");
+      gcsApiService.createVoiceCreationFailedFile(voiceSpec).catch((err) =>{
+        console.error('Failed to create a failed file for a voice creation.');
+        console.error(err);
+      });
+
       // Returns error message from data exporter,
       // otherwise error from GCS (missing source file or invalid destination bucket)
       // or a static error message.

@@ -38,19 +38,6 @@ const getCurrentJobId = () => {
   return file.download().then((data) => parseInt(data[0].toString('utf8'), 10));
 };
 
-const setJobStatus = (jobId, status) => {
-  jobBucket.file(`${jobId}_$folder$`).setMetadata({
-    metadata: {
-      status: status,
-    },
-  }).then(function(data) {
-    console.log(`The status of job ${jobId} is updated to "${status}"`);
-  }).catch((err) => {
-    console.error(`Failed to update status of ${jobId} with status "${status}"`);
-    console.error(err);
-  });
-}
-
 const saveNewJobId = (newJobId) => {
   const file = jobBucket.file(JOB_COUNTER_FILE);
   return file.save(newJobId.toString());
@@ -121,6 +108,13 @@ const createTriggerFile = (voiceSpec) => {
   const triggerFile =
       jobBucket.file(pathLib.join(jobIdStr, '_resource_export_successful'));
   return triggerFile.save('');
+};
+
+const createVoiceCreationFailedFile = (voiceSpec) => {
+  const jobIdStr = voiceSpec.id.toString();
+  const file =
+      jobBucket.file(pathLib.join(jobIdStr, '_voice_creation_failed'));
+  return file.save('');
 };
 
 const copyOriginalResources = (voiceSpec) => {
@@ -256,12 +250,12 @@ const initializeJobFolder = (voiceSpec) => {
 module.exports = {
   copyOriginalResources,
   createTriggerFile,
+  createVoiceCreationFailedFile,
   getCurrentJobId,
   getJobDetails,
   getJobLogFiles,
   getModelServerSpecFile,
   initializeJobFolder,
   listJobFolders,
-  setJobStatus,
   saveNewJobId,
 };

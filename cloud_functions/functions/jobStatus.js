@@ -104,6 +104,8 @@ const startPipelineJob = (jobId) => {
       console.log('Successfully created pipeline info file');
     })
     .catch((err) => {
+      const failedVoiceTrainingStart = bucket.file(`${jobId}/_training_pipeline_start_failed`);
+      failedVoiceTrainingStart.save('')
       console.error(err);
     });
 };
@@ -158,9 +160,15 @@ module.exports = {
   _resource_export_failed: {
     text: 'Failed To Export Files',
   },
+  _voice_creation_failed: {
+    text: 'Failed to create the voice',
+  },
   _resource_export_successful: {
     text: 'Started Training Voice Model',
     callback: startPipelineJob,
+  },
+  _training_pipeline_start_failed: {
+    text: 'Failed to start voice training',
   },
   'built-voice.tar.gz': {
     text: 'Completed Voice Model Training',
