@@ -45,9 +45,9 @@ export default function wavePlayer($document, $http) {
           scope.alignment = response.data;
           this.init(scope, $element);
           scope.disablePlay = false;
-        }).catch(() => {
+        }).catch((response) => {
           const element = $element[0].querySelector('#wavesurfer');
-          element.innerHTML = 'Words not in lexicon.';
+          element.innerHTML = response.data;
           scope.disablePlay = true;
         });
       } else {
