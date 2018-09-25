@@ -14,6 +14,34 @@
 
 const utils = require('../utils');
 
+describe('Testing utils replaceCharactersWithSpaces method', () => {
+  it('The function should return characters replaced with spaces and trim', () => {
+    const testData = [
+      ['`<text>`', 'text'],
+      ['`text`', 'text'],
+      ['$(text)', 'text'],
+      ['"\$(text\)', 'text'],
+      ['\"\$(text\)', 'text'],
+      ['${{{text}', 'text'],
+      ['\$\{text\}', 'text'],
+      ['\${text"}', 'text'],
+      ['"${{text"}', 'text'],
+      ['"${text"}', 'text'],
+      ["\"ශ්රී ලංකාව'\"", 'ශ්රී ලංකාව'],
+      ['"$text"', 'text'],
+      ['$text', 'text'],
+      [",./;'[]*\-=", ''],
+      ['echo `<text>`', 'echo   text'],
+      ['echo $("text")', 'echo    text'],
+      ['echo \$\{text\}', 'echo   text'],
+    ];
+
+    testData.forEach(function(entry) {
+      expect(utils.replaceCharactersWithSpaces(entry[0])).toEqual(entry[1]);
+    });
+  });
+});
+
 describe('Testing utils getAlignmentData method', () => {
   const generateTestData = () => {
     let testContent = '()\n'; // Alignment data starts with this.
