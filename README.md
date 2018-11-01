@@ -14,6 +14,17 @@ improve TTS research, especially for low-resourced languages,
 where more experimentations are often needed to get the most out of the limited
 data.
 
+
+Publication - https://ai.google/research/pubs/pub46977
+
+* [Installation](#installation)
+  + [Prerequisites](#prerequisites)
+  + [Deployment](#deployment)
+  + [Create an example voice](#create-an-example-voice)
+  + [(Optional) Using Custom Data Exporter](#optional-using-custom-data-exporter)
+  + [Voice Builder specification](#voice-builder-specification)
+* [Additional Information](#additional-information)
+
 ## Installation
 
 ### Prerequisites
