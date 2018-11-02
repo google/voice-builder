@@ -77,7 +77,7 @@ Publication - https://ai.google/research/pubs/pub46977
     gcloud auth login
     ```
 
-3. Also, if you haven't logged in to your account via firebase , please log in by:
+3. Also, if you haven't logged in to your account via firebase, please log in by:
 
     ```
     firebase login --no-localhost
@@ -88,7 +88,7 @@ Publication - https://ai.google/research/pubs/pub46977
     - PROJECT_NAME: your created GCP project's name from Prerequisite 1) e.g. vb-test-project
     - PROJECT_ID: your created GCP project's id from Prerequisite 1) e.g. vb-test-project
     - GCP_SERVICE_ACCOUNT_EMAIL: Use Compute Engine service account (you can find
-    one by cliking on top left menu under "IAM & admin > Service accounts") e.g.
+    one by clicking on top left menu under "IAM & admin > Service accounts") e.g.
     123456778911-compute@developer.gserviceaccount.com
 
 4. Create GCS buckets for Voice Builder to store each job data
