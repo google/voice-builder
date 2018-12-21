@@ -10,6 +10,9 @@ These data are taken from https://github.com/googlei18n/language-resources
 - [Bengali (bangladesh)](#bengali-bangladesh)
 - [Nepali](#nepali)
 
+
+Phonology Documentation can be found [here](https://github.com/googlei18n/language-resources/blob/master/docs/JSON_PHONOLOGY.md)
+
 ## Javaneses
 
 - Lexicon: [gs://voice-builder-public-data/all_example_data/linguistics_data/jv/lexicon.scm](http://storage.googleapis.com/voice-builder-public-data/all_example_data/linguistics_data/jv/lexicon.scm)
