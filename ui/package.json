@@ -26,7 +26,7 @@
     "http-proxy-middleware": "^0.17.4",
     "jquery": "^3.3.1",
     "js-yaml": "^3.13.1",
-    "morgan": "^1.9.0",
+    "morgan": "^1.9.1",
     "wavesurfer.js": "^2.0.5",
     "webpack": "^2.7.0",
     "webpack-dev-middleware": "^1.12.2",
