@@ -24,7 +24,7 @@
     "googleapis": "^22.2.0",
     "http-proxy": "^1.16.2",
     "http-proxy-middleware": "^0.17.4",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "js-yaml": "^3.13.1",
     "morgan": "^1.9.0",
     "wavesurfer.js": "^2.0.5",
