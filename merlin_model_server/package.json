@@ -13,7 +13,7 @@
     "compression": "^1.7.2",
     "cors": "^2.8.4",
     "express": "^4.16.2",
-    "googleapis": "^22.2.0",
+    "googleapis": "^39.1.0",
     "gunzip-maybe": "^1.4.1",
     "tar-fs": "^1.16.0"
   },
