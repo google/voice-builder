@@ -22,7 +22,7 @@
     "eslint-config-angular": "^0.5.0",
     "express": "^4.16.2",
     "googleapis": "^22.2.0",
-    "http-proxy": "^1.16.2",
+    "http-proxy": "^1.18.1",
     "http-proxy-middleware": "^0.17.4",
     "jquery": "^3.3.1",
     "js-yaml": "^3.13.1",
