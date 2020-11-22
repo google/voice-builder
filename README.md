@@ -105,6 +105,40 @@ Publication - https://ai.google/research/pubs/pub46977
 
 4. Deploy ui component
 
+    ### *Note on Docker versioning*
+
+    This script has been edited for use with Docker versions more recent than
+    18.03
+
+    Before running ui deployment please run
+
+    ```
+    gcloud auth configure-docker
+    ```
+
+    to configure `docker` to use `gcloud` as a credential helper
+
+    If you are running the deprecated versioning of Docker (`18.03` or lower),
+    you may skip this step and instead edit
+
+    `build_docker.sh`
+
+    Uncommenting line 37
+
+    ```
+    gcloud docker --project="${PROJECT_ID}" -- push "$IMAGE"
+    ```
+
+    and commenting out line 45
+
+    ```
+    #docker -- push gcr.io/blackfoot-revitalization/ui:latest
+    ```
+
+    to edit the code to run the Docker push directly through `gcloud`
+
+    Now run:
+
     ```
     ./deploy.sh ui create
     ```
