@@ -105,10 +105,7 @@ Publication - https://ai.google/research/pubs/pub46977
 
 4. Deploy ui component
 
-    ### *Note on Docker versioning*
-
-    This script has been edited for use with Docker versions more recent than
-    18.03
+    ### Docker version > 18.03
 
     Before running ui deployment please run
 
@@ -118,8 +115,10 @@ Publication - https://ai.google/research/pubs/pub46977
 
     to configure `docker` to use `gcloud` as a credential helper
 
+    ### Docker version <=  18.03
+
     If you are running the deprecated versioning of Docker (`18.03` or lower),
-    you may skip this step and instead edit
+    edit
 
     `build_docker.sh`
 
