@@ -13,10 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-PROJECT_NAME="<PROJECT_NAME>"
+PROJECT_NAME="rosie-blackfoot-revitalization"
 PROJECT_NAME_LOWERCASE="${PROJECT_NAME,,}"
-PROJECT_ID="<PROJECT_ID>"
-GCP_SERVICE_ACCOUNT_EMAIL="<GCP_SERVICE_ACCOUNT_EMAIL>"
+PROJECT_ID="blackfoot-revitalization"
+GCP_SERVICE_ACCOUNT_EMAIL=" 819767746658-compute@developer.gserviceaccount.com"
 DATA_EXPORTER_SERVICE_ACCOUNT="<DATA_EXPORTER_SERVICE_ACCOUNT>"
 
 CONTAINER_REGISTRY="gcr.io/${PROJECT_ID}"

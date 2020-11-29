@@ -24,7 +24,7 @@ fi
 IMAGE=$1
 DIR=$2
 PROJECT_ID=$3
-DOCKER_CMD="docker build --no-cache -t $IMAGE $DIR"
+DOCKER_CMD="sudo docker build --no-cache -t $IMAGE $DIR"
 TIMESTAMP=$(date +%s)
 echo "timestamp: $TIMESTAMP"
 
@@ -32,4 +32,14 @@ echo "timestamp: $TIMESTAMP"
 echo "running: $DOCKER_CMD"
 eval "${DOCKER_CMD}"
 
-gcloud docker --project="${PROJECT_ID}" -- push "$IMAGE"
+#This command requires docker version 18.03 or below:
+
+#gcloud docker --project="${PROJECT_ID}" -- push "$IMAGE"
+
+#This docker usage is deprecated
+#run `gcloud auth configure-docker` to configure `docker` to use `gcloud` as a
+#credential helper
+
+#then run:
+
+docker -- push gcr.io/blackfoot-revitalization/ui:latest
