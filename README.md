@@ -113,7 +113,7 @@ Publication - https://ai.google/research/pubs/pub46977
     gcloud auth configure-docker
     ```
 
-    to configure `docker` to use `gcloud` as a credential helper
+    This will configure `docker` to use `gcloud` as a credential helper
 
     ### Docker version <=  18.03
 
@@ -128,13 +128,13 @@ Publication - https://ai.google/research/pubs/pub46977
     gcloud docker --project="${PROJECT_ID}" -- push "$IMAGE"
     ```
 
-    and commenting out line 45
+    And commenting out line 45
 
     ```
     #docker -- push gcr.io/blackfoot-revitalization/ui:latest
     ```
 
-    to edit the code to run the Docker push directly through `gcloud`
+    This will run the Docker push directly through `gcloud`
 
     Now run:
 
