@@ -124,26 +124,26 @@ Publication - https://ai.google/research/pubs/pub46977
 
     Uncommenting line 37
 
-    ```
+    ```sh
     gcloud docker --project="${PROJECT_ID}" -- push "$IMAGE"
     ```
 
     And commenting out line 45
 
-    ```
-    #docker -- push gcr.io/blackfoot-revitalization/ui:latest
+    ```sh
+    # docker -- push gcr.io/blackfoot-revitalization/ui:latest
     ```
 
     This will run the Docker push directly through `gcloud`
 
     Now run:
 
-    ```
+    ```sh
     ./deploy.sh ui create
     ```
     After the deployment, you should get an IP that you can access from command
-    line's result (EXTERNAL_IP). You can access your instance of Voice Builder
-    by visiting http://EXTERNAL_IP:3389 in
+    line's result `EXTERNAL_IP`. You can access your instance of Voice Builder
+    by visiting `http://EXTERNAL_IP:3389` in
     your browser.
 
 ### Create an example voice
