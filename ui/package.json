@@ -15,7 +15,7 @@
     "angular-aria": "^1.6.9",
     "angular-material": "^1.1.7",
     "angular-route": "^1.6.9",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "body-parser": "^1.18.2",
     "bootstrap": "^3.4.1",
     "compression": "^1.7.2",
