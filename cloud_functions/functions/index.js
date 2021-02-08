@@ -31,7 +31,7 @@ const { JOB_BUCKET } = require('./config').GCS;
  */
 exports.onJobBucketChange =
   functions.storage.bucket(JOB_BUCKET).object().onChange((event) => {
-    const object = event.data;
+    const object = event;
 
     const filePath = object.name;
     const {
