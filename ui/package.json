@@ -29,7 +29,7 @@
     "morgan": "^1.9.0",
     "wavesurfer.js": "^2.0.5",
     "webpack": "^2.7.0",
-    "webpack-dev-middleware": "^1.12.2",
+    "webpack-dev-middleware": "^5.3.4",
     "webpack-hot-middleware": "^2.21.2"
   },
   "devDependencies": {
