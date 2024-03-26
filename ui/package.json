@@ -20,7 +20,7 @@
     "bootstrap": "^3.4.1",
     "compression": "^1.7.2",
     "eslint-config-angular": "^0.5.0",
-    "express": "^4.16.2",
+    "express": "^4.19.2",
     "googleapis": "^22.2.0",
     "http-proxy": "^1.16.2",
     "http-proxy-middleware": "^0.17.4",
